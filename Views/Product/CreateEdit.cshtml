@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Create / Edit produt";
+}
+
+@model newmvc.Models.Product
+
+<form>
+
+<label>Name</label>
+<input type="text" asp-for="Name"/>
+
+<label>Price</label>
+<input type="number" asp-for="Price" step=100/>
+
+<label>Description</label>
+<input type="text-area" asp-for="Description" />
+
+</form>
