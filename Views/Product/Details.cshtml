@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@model Product
+
+
+<div class="container d-flex flex-row">
+@* <img src="@Model.ImagePath" alt="ProductImg" class="img max-width-50vw"> *@
+<img src="@Model.ImagePath" alt="ProductImg" class="img-fluid me-3" style="max-width: 50vw;" />
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h5 class="card-title">@Model.Name</h5>
+    <p class="card-text text-muted">@Model.Description</p>
+    <span class="fw-bold text-primary">$@Model.Price</span>
+    <a href="#" class="btn btn-outline-primary btn-sm">Buy</a>
+</div>
+
+
+</div>
