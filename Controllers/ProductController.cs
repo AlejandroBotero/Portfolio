@@ -25,20 +25,19 @@ public class ProductController : Controller
         var products = _context.Products.ToList();
         return View(products);
     }
-    public IActionResult CreateProduct()
+    public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CreateProduct(ProductViewModel productviewmodel)
+    public async Task<IActionResult> Create(ProductViewModel productviewmodel)
     {
         Console.WriteLine("Entered Controller");
         string? imagePath = null;
         if (ModelState.IsValid)
         {
-            Console.WriteLine(productviewmodel.ImageFile.Name);
             if (productviewmodel.ImageFile != null)
             {
                 Console.WriteLine("image is not null");
@@ -79,5 +78,47 @@ public class ProductController : Controller
             return NotFound();
         }
         return View(product);
+    }
+
+    public IActionResult EditDeleteDetails(Guid id)
+    {
+        var product = _context.Products.FirstOrDefault(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+        return View(Mapper.ToViewModel(product));
+    }
+
+    public IActionResult EditDelete()
+    {
+        List<Product> products = _context.Products.ToList();
+        return View(products);
+    }
+
+    public IActionResult Delete(Guid id)
+    {
+        var product = _context.Products.FirstOrDefault(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+        _context.Products.Remove(product);
+        _context.SaveChanges();
+        return RedirectToAction("EditDelete");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Update(ProductViewModel productviewmodel)
+    {
+        var existingProduct = await _context.Products.FindAsync(productviewmodel.Id);
+        if (existingProduct != null)
+        {
+            existingProduct.Name = productviewmodel.Name;
+            existingProduct.Price = productviewmodel.Price;
+            existingProduct.Description = productviewmodel.Description;
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction("Products");
     }
 }

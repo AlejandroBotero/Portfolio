@@ -1,10 +1,10 @@
 @{
-    ViewData["Title"] = "Create / Edit produt";
+    ViewData["Title"] = "Create product";
 }
 
 @model newmvc.Models.ViewModels.ProductViewModel
 
-<form asp-action="CreateProduct" method="post" enctype="multipart/form-data">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
 
 <label>Name</label>
 <input type="text" asp-for="Name" placeholder="Name" required/>

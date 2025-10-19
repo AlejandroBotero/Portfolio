@@ -1,14 +1,6 @@
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Delete / Edit product";
 }
-@model List<Product>
-<style>
-img {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  object-fit: cover;
-}
-</style>
 
 
 <div class="d-flex flex-row flex-wrap">
@@ -16,14 +8,14 @@ img {
 {
     <div class="container py-5 col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card shadow-sm">
-            <img src="@Url.Content(product.ImagePath)" class="card-img-top" alt="Product Image">
+            <img src="@product.ImagePath" class="card-img-top" alt="Product Image">
 
             <div class="card-body">
-                <h5 class="card-title"><a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">@product.Name</a></h5>
+                <h5 class="card-title"><a asp-controller="Product" asp-action="EditDeleteDetails" asp-route-id="@product.Id">@product.Name</a></h5>
                 <p class="card-text text-muted">@product.Description</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <span class="fw-bold text-primary">$@product.Price</span>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Buy</a>
+                    <a asp-controller="Product" asp-action="EditDeleteDetails" asp-route-id="@product.Id" class="btn btn-outline-primary btn-sm">Edit</a>
                 </div>
             </div>
         </div>
