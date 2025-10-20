@@ -1,6 +1,6 @@
-namespace newmvc.Models.ViewModels;
+namespace newmvc.Models.ViewModels.Mappers;
 
-public class Mapper
+public class ProductMapper
 {
     public static ProductViewModel ToViewModel(Product product)
     {

@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using newmvc.Models;
 using newmvc.Data;
 using newmvc.Models.ViewModels;
-using System.IO;
-using System.Runtime.CompilerServices;
+using newmvc.Models.ViewModels.Mappers;
 
 namespace newmvc.Controllers;
 
@@ -87,7 +86,7 @@ public class ProductController : Controller
         {
             return NotFound();
         }
-        return View(Mapper.ToViewModel(product));
+        return View(ProductMapper.ToViewModel(product));
     }
 
     public IActionResult EditDelete()

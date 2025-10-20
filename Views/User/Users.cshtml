@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Create user";
+}
+
+@model List<User>
+
+@foreach (User user in Model){
+    <div>
+        <span>@user.Name</span>
+        <span>@user.Email</span>
+    </div>
+
+}

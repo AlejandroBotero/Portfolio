@@ -44,6 +44,11 @@ app.MapControllerRoute(
     pattern: "{controller=Products}/{id?}")
     .WithStaticAssets();
 
+app.MapControllerRoute(
+    name: "Users",
+    pattern: "{controller=Users}/{id?}")
+    .WithStaticAssets();
+
 app.UseStaticFiles();
 
 app.Run();
