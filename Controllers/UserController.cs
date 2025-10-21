@@ -34,11 +34,8 @@ public class UserController : Controller
         {
             User user = new User
             {
-                Name = userviewmodel.Name,
-                Surname = userviewmodel.Surname,
+                FullName = userviewmodel.FullName,
                 Email = userviewmodel.Email,
-                DateOfBirth = userviewmodel.DateOfBirth,
-                AccountCreationDate = DateTime.UtcNow
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();

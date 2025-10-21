@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using newmvc.Data;
+using newmvc.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer("server=MACHINA; database=db1; trusted_connection=true; TrustServerCertificate=True");
 });
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5052); // Or use .Listen(IPAddress.Parse("192.168.1.100"), 5052)
+    options.ListenAnyIP(5000); // Or use .Listen(IPAddress.Parse("192.168.1.100"), 5052)
 });
 
 

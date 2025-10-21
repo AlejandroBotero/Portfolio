@@ -1,12 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace newmvc.Models;
 
-public class User
+public class User : IdentityUser
 {
-    public Guid Id { get; set; }
-    public required string Name { get; set; }
-    public string? Surname { get; set; }
-    public required string Email { get; set; }
-    public DateTime? DateOfBirth { get; set; }
-    public DateTime AccountCreationDate { get; set; }
+    public required string FullName { get; set; }
+
+    // public required string Email { get; set; }
 
 }

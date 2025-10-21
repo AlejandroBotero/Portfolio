@@ -7,10 +7,8 @@ public class UserMapper
     {
         return new UserViewModel
         {
-            Name = user.Name,
-            Surname = user.Surname,
+            FullName = user.FullName,
             Email = user.Email,
-            DateOfBirth = user.DateOfBirth
         };
     }
 
@@ -18,12 +16,8 @@ public class UserMapper
     {
         return new User
         {
-            Id = Guid.NewGuid(),
-            Name = userViewModel.Name,
-            Surname = userViewModel.Surname,
+            FullName = userViewModel.FullName,
             Email = userViewModel.Email,
-            DateOfBirth = userViewModel.DateOfBirth,
-            AccountCreationDate = DateTime.UtcNow
         };
     }
 }
